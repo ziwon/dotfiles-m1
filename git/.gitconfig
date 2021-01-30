@@ -1,0 +1,85 @@
+[user]
+	name = Youngpil Yoon
+	email = yngpil.yoon@gmail.com
+	signedkey = 57008F46EA55163B
+[core]
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -+XF -Qc
+	excludesfile = ~/.gitexclude
+	trustctime = false
+	fscache = true
+	autocrlf = false
+	quotepath = false
+	precomposeunicode = true
+	untrackedCache = true
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[diff]
+	renames = copies
+	tool = vimdiff
+[diff "bin"]
+	textconv = hexdump -v -C
+[difftool]
+	prompt = false
+[diff-so-fancy]
+	stripLeadingSymbols = false
+[apply]
+	whitespace = fix
+[log]
+	date = iso8601
+[fetch]
+	prune = true
+[branch]
+	autosetuprebase = always
+[push]
+	default = simple
+	followTags = true
+[pull]
+	rebase = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[credential "https://github.com"]
+	username = ziwon
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[alias]
+	# use gitalias.txt
+	# https://github.com/GitAlias/gitalias
+[commit]
+	gpgsign = true
+[rerere]
+	enabled = true
+[stash]
+	showPatch = true
+[status]
+	showStash = true
+[submodule]
+	fetchJobs = 0
+[help]
+	autocorrect = 1
+[include]
+	path = .gitalias.txt
