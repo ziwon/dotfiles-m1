@@ -1,25 +1,35 @@
 #!/bin/sh
 
-set -x
+cat << EOF
+█░█ █▀█ █▀▄▀█ █▀▀ █▄▄ █▀█ █▀▀ █░█░█
+█▀█ █▄█ █░▀░█ ██▄ █▄█ █▀▄ ██▄ ▀▄▀▄▀
+EOF
 
 # x86_64
-if test ! $(which brew); then
+if [[ ! -d "/usr/local/Homebrew" ]]; then
+  echo "Installing Homebrew (Intel)"
+  pushd ~ &> /dev/null
   arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  pod &> /dev/null
 fi
 
 # arm64
-#if [ ! -d "/opt/homebrew" ]; then
-#  pushd ~ &> /dev/null
-#  mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
-#  sudo mv homebrew /opt/homebrew
-#  pod &> /dev/null
-#fi
+if [[ `uname -m` == "arm64" ]]; then
+  if [[ ! -d "/opt/homebrew" ]]; then
+    echo "Installing Homebrew (ARM)"
+    pushd ~ &> /dev/null
+    mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+    sudo mv homebrew /opt/homebrew
+    pod &> /dev/null
+  fi
+fi
 
 # Allow to install apps from anywhere in Gatekeeper
 sudo spctl --master-disable
 
-arch -x86_64 brew update
-arch -x86_64 brew bundle
+# Install packages with Homebrew (Intel)
+brew update
+brew bundle
 
 # Return to the default strict mode in Gatekeeper
 sudo spctl --master-enable

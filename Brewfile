@@ -14,6 +14,7 @@ tap 'universal-ctags/universal-ctags' # ctags
 
 ## shell
 brew 'ack'
+brew 'asdf'
 brew 'bat'
 brew 'binutils'
 brew 'coreutils'
@@ -35,11 +36,12 @@ brew 'pstree'
 brew 'readline'
 brew 'ripgrep'
 brew 'rsync'
-brew 'tmux' 
+brew 'tmux'
 brew 'tree'
 brew 'universal-ctags/universal-ctags/universal-ctags', args: ['HEAD', 'with-libyaml', 'with-jansson']
 brew 'unzip'
 brew 'watch'
+brew 'zsh'
 brew 'zsh-completions'
 
 ## git
@@ -78,9 +80,9 @@ brew 'azure-cli'
 ## dev - docker
 brew 'docker-completion'
 brew 'minikube'
+brew 'kubectx'
 brew 'kubernetes-cli'
 brew 'kubernetes-helm'
-brew 'kubectx'
 brew 'helmfile'
 
 ## dev - network & security
@@ -144,6 +146,7 @@ cask 'colorpicker-materialdesign'
 cask 'firefox-developer-edition'
 cask 'grammarly'
 cask 'iterm2'
+cask 'kitty'
 cask 'lens'
 cask 'maccy'
 cask 'ngrok'
@@ -179,5 +182,5 @@ mas 'HWP Viewer', id: 416746898
 mas 'Slack', id: 803453959
 mas 'The Unarchiver', id: 425424353
 mas 'VPN Unlimited', id: 727593140
-mas 'WireGuard', id: 1451685025 
+mas 'WireGuard', id: 1451685025
 mas 'Unicorn HTTPS', id: 1475628500
