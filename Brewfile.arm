@@ -1,0 +1,3 @@
+brew 'nnn'
+brew 'imagemagick'
+brew 'kitty'
