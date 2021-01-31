@@ -160,8 +160,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "----------------------------------------------
 set background=dark
 set termguicolors
-" colorscheme $VIM_COLOR_SCHEME
-colorscheme base16-embers
+colorscheme $VIM_COLOR_SCHEME
 
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
