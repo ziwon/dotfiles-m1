@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 file="unkown"
-# Mac
+
 if [[ "${OSTYPE//[0-9.]/}" == "darwin" ]]; then
   file="kubectl-fzf_darwin_amd64.tar.gz"
 fi
@@ -10,7 +10,6 @@ if  [[ "${OSTYPE//[0-9.]/}" == "linux" ]]; then
   file="kubectl-fzf_linux_amd64.tar.gz"
 fi
 
-echo $file
 curl -fLo ~/.tmp/kube-fzf/$file --create-dirs "https://github.com/bonnefoa/kubectl-fzf/releases/latest/download/$file"
 
 pushd ~/.tmp/ >& /dev/null

@@ -1,7 +1,7 @@
 # dotfiles-m1
 dotfiles for 2021 and beyond
 
-(Unstable, Working on..)
+(Unstable, still working on)
 
 - zsh with XDG
 - tmux
@@ -9,8 +9,9 @@ dotfiles for 2021 and beyond
 - nnn
 - z
 - fzf
+  - [kube-fzf](https://github.com/thecasualcoder/kube-fzf)
 - asdf
 - kitty
-- base16 theme
+- base16 theme: zsh, tmux, vim, fzf-preview
 
 ![](./docs/screenshot.png)
