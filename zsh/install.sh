@@ -18,6 +18,7 @@ mkdir -p ${ZDOTDIR}
 # 3. `$ZDOTDIR/.zshrc`      Run for interactive shells
 # 4. `$ZDOTDIR/.zlogin`     Run for login shells
 
+
 link autoload.zsh $ZDOTDIR/autoload.zsh
 link setopt.zsh   $ZDOTDIR/setopt.zsh
 link bindkey.zsh  $ZDOTDIR/bindkey.zsh
@@ -27,10 +28,17 @@ link prompt.zsh   $ZDOTDIR/prompt.zsh
 link plugin.zsh   $ZDOTDIR/plugin.zsh
 link p10k.zsh     $ZDOTDIR/p10k.zsh
 
-link .zshenv      $HOME/.zshenv
-link .zprofile    $HOME/.zprofile
-link .zlogin      $HOME/.zlogin
-link .zshrc       $HOME/.zshrc
+link .zshenv      $ZDOTDIR/.zshenv
+link .zprofile    $ZDOTDIR/.zprofile
+link .zlogin      $ZDOTDIR/.zlogin
+link .zshrc       $ZDOTDIR/.zshrc
+
+
+# Fix a problem to load .zshenv with ZDOTDIR in Tmux
+# # https://www.khasegawa.net/posts/2018/12/fix-zsh-environment-variables/
+[[ ! -f "~/.zshenv" ]] && {
+  echo "export ZDOTDIR=${HOME}/.config/zsh; source ${ZDOTDIR}/.zshenv" | tee ~/.zshenv
+}
 
 # back to root directory
 cd -

@@ -111,8 +111,8 @@ zinit ice pick"h.sh" id-as'hhighlighter'
 zinit light paoloantinori/hhighlighter
 
 # wakatime
-zinit ice wait"3" blockf lucid pick"wakatime.plugin.zsh" id-as'wakatime-zsh-plugin'
-zinit light "sobolevn/wakatime-zsh-plugin"
+#zinit ice wait"3" blockf lucid pick"wakatime.plugin.zsh" id-as'wakatime-zsh-plugin'
+#zinit light "sobolevn/wakatime-zsh-plugin"
 
 # map pages
 zinit id-as'zsh-colored-man-pages' light-mode for ael-code/zsh-colored-man-pages
