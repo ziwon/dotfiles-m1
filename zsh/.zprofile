@@ -20,13 +20,18 @@ export TMUX_COLOR_SCHEME=${BASE16_THEME}
 export LS_MOD=exa
 
 # fzf
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --ignore-file ~/.gitignore"
-export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --theme=Nord --wrap=never --color=always --pager=never {}"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --ignore-file ~/.gitexclude"
+export FZF_PREVIEW_COMMAND="[[ -f {} ]] && bat --style=numbers,changes --theme=Nord --wrap=never --color=always --pager=never {}"
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_DEFAULT_OPTS="-m"
-FZF_DEFAULT_OPTS+=" --color='light'"
+# https://github.com/fnune/base16-fzf/blob/master/bash/base16-embers.config
+export FZF_DEFAULT_OPTS=" -m"
+FZF_DEFAULT_OPTS+=" --color=bg+:$color02,bg:$color00,spinner:$color0C,hl:$color0D"\
+" --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C"\
+" --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D"
+FZF_DEFAULT_OPTS+=" --reverse"
+FZF_DEFAULT_OPTS+=" --preview-window=:hidden"
 FZF_DEFAULT_OPTS+=" --height 80%"
-FZF_DEFAULT_OPTS+=" --bind 'ctrl-u:preview-up,ctrl-d:preview-down,ctrl-o:toggle+up,ctrl-i:toggle+down,ctrl-space:toggle-preview'"
+FZF_DEFAULT_OPTS+=" --bind 'ctrl-u:preview-up,ctrl-d:preview-down,ctrl-o:toggle+up,ctrl-i:toggle+down,ctrl-p:toggle-preview'"
 FZF_DEFAULT_OPTS+=" --preview '${FZF_PREVIEW_COMMAND}'"
 
 # nnn
@@ -59,3 +64,7 @@ if (( $+commands[pyenv] )); then eval "$(pyenv init -)"; fi
 if (( $+commands[asdf] )); then
   source /usr/local/opt/asdf/asdf.sh
 fi
+
+
+autoload -Uz compinit && compinit;
+source <(kubectl completion zsh)

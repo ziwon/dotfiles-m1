@@ -1,3 +1,4 @@
+
 # Ref: http://zdharma.org/zinit/wiki/GALLERY/
 
 # Load a few important annexes, without Turbo
@@ -44,12 +45,19 @@ zinit ice wait blockf lucid id-as'zsh-completions' \
 zinit light zsh-users/zsh-completions
 
 # fzf
-zinit ice wait lucid id-as'fzf-shell'
+zinit ice wait'0a' lucid id-as'fzf-shell'
 zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh'
 
 # fzf tab
-zinit ice wait lucid id-as'fzf-tab' has'fzf'
+zinit ice wait'0a' lucid id-as'fzf-tab' has'fzf'
 zinit light Aloxaf/fzf-tab
+
+# kube-fzf
+zinit ice wait'0b' lucid id-as'kubectl'
+zinit snippet OMZ::plugins/kubectl/kubectl.plugin.zsh
+
+zinit ice wait'0c' lucid id-as'kube-fzf'
+zinit snippet 'https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/master/kubectl_fzf.plugin.zsh'
 
 # delta
 zinit ice wait'0c' lucid id-as'delta' \
@@ -74,20 +82,6 @@ zinit load hlissner/zsh-autopair
 # alias tip
 zinit ice wait lucid id-as'alias-tips'
 zinit light djui/alias-tips
-
-# # tldr
-# zinit ice wait lucid id-as'tldr' \
-#   from'gh-r' \
-#   as'program' \
-#   mv'tldr-* -> tldr' \
-#   sbin'tldr*'
-# zinit light dbrgn/tealdeer
-
-# zinit ice wait lucid id-as'tldr-completion' \
-#   has'tldr' \
-#   mv'tldr* -> _tldr' \
-#   as'completion'
-# zinit snippet https://github.com/dbrgn/tealdeer/blob/master/zsh_tealdeer
 
 # cht.sh
 zinit ice wait lucid id-as'cht.sh' \

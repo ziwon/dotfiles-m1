@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 cat << EOF
 ▀█ █▀ █░█
 █▄ ▄█ █▀█
@@ -17,8 +18,6 @@ mkdir -p ${ZDOTDIR}
 # 3. `$ZDOTDIR/.zshrc`      Run for interactive shells
 # 4. `$ZDOTDIR/.zlogin`     Run for login shells
 
-link .zshenv      $HOME/.zshenv
-
 link autoload.zsh $ZDOTDIR/autoload.zsh
 link setopt.zsh   $ZDOTDIR/setopt.zsh
 link bindkey.zsh  $ZDOTDIR/bindkey.zsh
@@ -26,10 +25,11 @@ link alias.zsh    $ZDOTDIR/alias.zsh
 link func.zsh     $ZDOTDIR/func.zsh
 link prompt.zsh   $ZDOTDIR/prompt.zsh
 link plugin.zsh   $ZDOTDIR/plugin.zsh
+link p10k.zsh     $ZDOTDIR/p10k.zsh
 
-link .zlogin      $ZDOTDIR/.zlogin
-link .zprofile    $ZDOTDIR/.zprofile
-
+link .zshenv      $HOME/.zshenv
+link .zprofile    $HOME/.zprofile
+link .zlogin      $HOME/.zlogin
 link .zshrc       $HOME/.zshrc
 
 # back to root directory

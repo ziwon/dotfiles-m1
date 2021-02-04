@@ -38,7 +38,7 @@ setopt menu_complete
 unsetopt flow_control
 
 # history
-HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTFILE="$ZSH_CACHE_DIR/.zsh_history"
 HISTSIZE=1000000000
 SAVEHIST=5000
 setopt appendhistory notify

@@ -1,4 +1,4 @@
-# skip if not interactive
+
 [[ -o interactive ]] || return
 
 PS1="READY > "
@@ -14,9 +14,10 @@ autoload -Uz _zinit
 
 # load modules
 source "$ZDOTDIR"/setopt.zsh
+source "$ZDOTDIR"/autoload.zsh
 source "$ZDOTDIR"/plugin.zsh
 source "$ZDOTDIR"/alias.zsh
 source "$ZDOTDIR"/func.zsh
-source "$ZDOTDIR"/autoload.zsh
 source "$ZDOTDIR"/bindkey.zsh
 source "$ZDOTDIR"/prompt.zsh
+source "$ZDOTDIR"/p10k.zsh

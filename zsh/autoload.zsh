@@ -1,7 +1,8 @@
-autoload -U compinit
-autoload -U colors && colors
+autoload -Uz compinit
+if [[ -n $ZSH_CACHE_DIR/zcompdump(#qN.mh+24) ]]; then
+    compinit;
+else
+    compinit -C;
 
-# url
-autoload -Uz url-quote-magic bracketed-paste-magic
-zle -N self-insert url-quote-magic
-zle -N bracketed-paste bracketed-paste-magic
+fi;
+autoload -U colors && colors
