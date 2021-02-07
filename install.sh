@@ -74,6 +74,9 @@ case $1 in
   nnn)
     source ./nnn/install.sh
     ;;
+  ssh)
+    source ./ssh/install.sh
+    ;;
   all)
     source ./homebrew/install.sh
     source ./zsh/install.sh

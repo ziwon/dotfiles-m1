@@ -1,0 +1,31 @@
+# Raspberry Pi
+Host pi-0
+  Hostname 192.168.250.100
+  User ubuntu
+  IdentityFile ~/.ssh/id_rsa.pi
+
+Host pi-1
+  Hostname 192.168.250.101
+  User ubuntu
+  IdentityFile ~/.ssh/id_rsa.pi
+
+Host pi-2
+  Hostname 192.168.250.102
+  User ubuntu
+  IdentityFile ~/.ssh/id_rsa.pi
+
+Host pi-3
+  Hostname 192.168.250.103
+  User ubuntu
+  IdentityFile ~/.ssh/id_rsa.pi
+
+# GitHub
+Host github.com
+   HostName github.com
+   User ziwon
+   IdentityFile ~/.ssh/id_rsa.github
+   IdentitiesOnly yes
+
+# Default
+Host *
+  User aaron
