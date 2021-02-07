@@ -1,1 +1,3 @@
 *.lock.json
+!*/id_rsa*.asc
+*/id_rsa.github
