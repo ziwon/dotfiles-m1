@@ -15,6 +15,5 @@ curl -fLo ~/.tmp/kube-fzf/$file --create-dirs "https://github.com/bonnefoa/kubec
 pushd ~/.tmp/ >& /dev/null
 tar -xf $file -C ./kube-fzf
 mv ./kube-fzf/cache_builder /usr/local/bin/cache_builder
-
 pod >& /dev/null
 
