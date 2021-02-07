@@ -77,6 +77,9 @@ case $1 in
   ssh)
     source ./ssh/install.sh
     ;;
+  gpg)
+    source ./gpg/install.sh
+    ;;
   all)
     source ./homebrew/install.sh
     source ./zsh/install.sh
@@ -85,4 +88,6 @@ case $1 in
     source ./python/install.sh
     source ./golang/install.sh
     source ./nvim/install.sh
+    source ./ssh/install.sh
+    source ./gpg/install.sh
 esac
