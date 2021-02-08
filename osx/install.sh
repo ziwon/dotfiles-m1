@@ -1,24 +1,6 @@
 ###############################################################################
 # Key
 ###############################################################################
-kbdVendorID=1452
-kbdVendorID=$( ioreg -n IOHIDKeyboard -r | grep \"VendorID\"  | sed -e 's:.* ::')
-kbdProductID=610
-kbdProductID=$(ioreg -n IOHIDKeyboard -r | grep \"ProductID\" | sed -e 's:.* ::')
-
-set -x
-
-defaults -currentHost write \
-   -g com.apple.keyboard.modifiermapping.${kbdVendorID}-${kbdProductID}-0 \
-   -array '<dict><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer><key>HIDKeyboardModifierMappingDst</key><integer>2</integer></dict>'
-
-set +x 2>/dev/null
-echo
-echo 'NOTE: you must logoff/login for this to take effect!'
-
-# Find ID: ioreg -p IOUSB -c IOUSBDevice | grep -e class -e idVendor -e idProduct
-defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-636-0 -array-add $CAPS_LOCK_BECOMES_ESC
-
 # Disable automatic capitalization as it’s annoying when typing code
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
 
