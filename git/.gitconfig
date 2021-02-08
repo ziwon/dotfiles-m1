@@ -1,7 +1,7 @@
 [user]
 	name = Youngpil Yoon
 	email = yngpil.yoon@gmail.com
-	signedkey = 57008F46EA55163B
+	signingkey = 81A82D6E1ABC9F7A
 [core]
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -+XF -Qc
@@ -83,3 +83,5 @@
 	autocorrect = 1
 [include]
 	path = .gitalias.txt
+[gpg]
+	program = /usr/local/bin/gpg
