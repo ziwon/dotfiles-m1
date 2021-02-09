@@ -1,0 +1,23 @@
+default_stages: [push]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.1.0
+    hooks:
+      - id: check-vcs-permalinks
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: debug-statements
+      - id: no-commit-to-branch
+repos:
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.14.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+repos:
+  - repo: git://github.com/detailyang/pre-commit-shell
+    rev: v1.0.6
+    hooks:
+    - id: shell-lint
+      args: [--format=json]
