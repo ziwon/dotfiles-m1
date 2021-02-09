@@ -1,0 +1,30 @@
+{
+    "terminal.integrated.fontFamily": "\"FantasqueSansMono Nerd Font\"",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontWeight": null,
+    "editor.fontFamily": "\"FantasqueSansMono Nerd Font\", Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 15,
+    "workbench.colorCustomizations": {
+        "terminal.background":"#16130F",
+        "terminal.foreground":"#A39A90",
+        "terminalCursor.background":"#A39A90",
+        "terminalCursor.foreground":"#A39A90",
+        "terminal.ansiBlack":"#16130F",
+        "terminal.ansiBlue":"#6D5782",
+        "terminal.ansiBrightBlack":"#5A5047",
+        "terminal.ansiBrightBlue":"#6D5782",
+        "terminal.ansiBrightCyan":"#576D82",
+        "terminal.ansiBrightGreen":"#57826D",
+        "terminal.ansiBrightMagenta":"#82576D",
+        "terminal.ansiBrightRed":"#826D57",
+        "terminal.ansiBrightWhite":"#DBD6D1",
+        "terminal.ansiBrightYellow":"#6D8257",
+        "terminal.ansiCyan":"#576D82",
+        "terminal.ansiGreen":"#57826D",
+        "terminal.ansiMagenta":"#82576D",
+        "terminal.ansiRed":"#826D57",
+        "terminal.ansiWhite":"#A39A90",
+        "terminal.ansiYellow":"#6D8257"
+    },
+    "workbench.colorTheme": "Base16 Dark Embers"
+}
