@@ -19,4 +19,10 @@ echo "Installing pip.."
 pip install --upgrade pip
 asdf reshim python
 
+echo "Install poetry.."
+asdf plugin-add poetry https://github.com/crflynn/asdf-poetry.git
+
+asdf install poetry 1.1.4
+asdf global poetry 1.1.4
+
 cd -

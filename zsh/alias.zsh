@@ -81,6 +81,11 @@ alias get='curl -O -L'
 
 # kubectl
 alias k='kubectl'
+alias kg='kubectl get'
+alias kc='kubectl create'
+alias kd='kubectl delete'
+alias kr='kubectl run'
+#alias odr='-o yaml --dry-run=client'
 
 # asdf
 alias update-nvim-nightly='asdf uninstall neovim nightly && asdf install neovim nightly'
@@ -96,3 +101,5 @@ fi
 
 alias abrew='/opt/homebrew/bin/brew'
 alias install_arm_brew='abrew bundle --file $DOTFILE_HOME/Brewfile.arm'
+
+

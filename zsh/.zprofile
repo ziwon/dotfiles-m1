@@ -65,6 +65,12 @@ if (( $+commands[asdf] )); then
   source /usr/local/opt/asdf/asdf.sh
 fi
 
-
+# TODO: autoload should be handled in autoload.zsh
 autoload -Uz compinit && compinit;
+
+# poetry
+source $ASDF_DATA_DIR/installs/poetry/1.1.4/env
+poetry config virtualenvs.in-project true
+
+# kubectl
 source <(kubectl completion zsh)

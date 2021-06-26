@@ -10,6 +10,8 @@ if [[ ! -d "/usr/local/Homebrew" ]]; then
   echo "Installing Homebrew (Intel)"
   pushd ~ &> /dev/null
   arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  chmod 755 /usr/local/share/zsh
+  chmod 755 /usr/local/share/zsh/site-functions
   pod &> /dev/null
 fi
 

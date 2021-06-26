@@ -44,6 +44,15 @@ zinit ice wait blockf lucid id-as'zsh-completions' \
   atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
+# other completions
+zinit atpull'%atclone' for \
+    has'pyenv'  id-as'pyenv'  atclone"pyenv init - --no-rehash         > pyenv.plugin.zsh"    zdharma/null \
+    has'poetry' id-as'poetry' atclone"poetry completions zsh           > _poetry"             zdharma/null \
+    has'pipx'   id-as'pipx'   atclone"register-python-argcomplete pipx > pipx.plugin.zsh" \
+        has'register-python-argcomplete' zdharma/null \
+    has'terraform' id-as'terraform' \
+        atclone'<<<"complete -o nospace -C $(which terraform) terraform" > terraform.plugin.zsh' zdharma/null
+
 # fzf
 zinit ice wait'0a' lucid id-as'fzf-shell'
 zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh'

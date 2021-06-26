@@ -74,6 +74,7 @@ export PIPX_HOME=$XDG_DATA_HOME/pipx
 export PIPX_BIN_DIR=$XDG_DATA_HOME/pipx/bin
 export POETRY_HOME=$XDG_DATA_HOME/poetry
 export PYTHON_EGG_CACHE=${XDG_CACHE_HOME}/python-eggs
+export POETRY_HOME=${XDG_DATA_HOME}/poetry
 
 # ruby
 export RBENV_ROOT=$XDG_DATA_HOME/rbenv
