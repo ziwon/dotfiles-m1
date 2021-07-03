@@ -42,7 +42,7 @@ export TMUX_PLUGIN_MANAGER_PATH=${TMUX_HOME}/plugins
 
 # z
 export _Z_DATA=$XDG_DATA_HOME/z/.z
-[[ -f ${_Z_DATA} ]] || mkdir -p ${_Z_DATA:h} && touch ${_Z_DATA}
+[[  -f ${_Z_DATA} ]] || mkdir -p ${_Z_DATA:h} && touch ${_Z_DATA}
 
 # aws
 export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME}/aws/credentials
@@ -69,7 +69,7 @@ export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
 export NPM_CONFIG_STORE_DIR=$XDG_CACHE_HOME/pnpm-store
 
 # python
-export PYENV_ROOT=$XDG_DATA_HOME/pyenv
+# export PYENV_ROOT=$XDG_DATA_HOME/pyenv
 export PIPX_HOME=$XDG_DATA_HOME/pipx
 export PIPX_BIN_DIR=$XDG_DATA_HOME/pipx/bin
 export POETRY_HOME=$XDG_DATA_HOME/poetry
@@ -93,6 +93,8 @@ export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/ripgrep/config
 # asdf
 export ASDF_DATA_DIR=${XDG_DATA_HOME}/asdf
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=${XDG_CACHE_HOME}/asdf/.tool-versions
+[[ -d ${XDG_CACHE_HOME}/asdf ]] || mkdir -p ${XDG_CACHE_HOME}/asdf
+[[ -f ${ASDF_DEFAULT_TOOL_VERSIONS_FILENAME} ]] || touch ${ASDF_DEFAULT_TOOL_VERSIONS_FILENAME}
 
 # zinit
 [[ -e $BASH ]] || {

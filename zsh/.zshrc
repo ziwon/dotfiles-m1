@@ -3,6 +3,7 @@
 
 PS1="READY > "
 
+
 # zinit install & config
 if [[ ! -f "$ZINIT[BIN_DIR]/zinit.zsh" ]]; then
   git clone https://github.com/zdharma/zinit "${ZINIT[BIN_DIR]}"

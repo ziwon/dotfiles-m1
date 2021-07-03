@@ -58,19 +58,16 @@ path=(
 
 # hook
 if (( $+commands[direnv] )); then eval "$(direnv hook zsh)"; fi
-if (( $+commands[pyenv] )); then eval "$(pyenv init -)"; fi
+
 
 # asdf
 if (( $+commands[asdf] )); then
-  source /usr/local/opt/asdf/asdf.sh
+  #source /usr/local/opt/asdf/asdf.sh
 fi
 
-# TODO: autoload should be handled in autoload.zsh
-autoload -Uz compinit && compinit;
-
 # poetry
-source $ASDF_DATA_DIR/installs/poetry/1.1.4/env
-poetry config virtualenvs.in-project true
+# source $ASDF_DATA_DIR/installs/poetry/1.1.4/pyvenv.cfg
+# poetry config virtualenvs.in-project true
 
 # kubectl
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)

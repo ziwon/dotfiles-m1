@@ -22,6 +22,7 @@ echo "Installing nvim.."
 asdf-add neovim
 asdf install neovim nightly
 asdf global neovim nightly
+asdf reshim neovim 
 
 echo "Copying nvim.ini"
 mkdir -p $VIMDOTDIR
