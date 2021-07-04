@@ -92,19 +92,64 @@ zinit ice wait lucid id-as'cht.sh' \
 zinit snippet https://cht.sh/:cht.sh
 
 # cht-completion
-zinit ice wait lucide id-as'cht-completion' \
+zinit ice wait lucid id-as'cht-completion' \
   has'rlwrap' \
   mv'cht* -> _cht' \
   as'completion'
 zinit snippet https://cheat.sh/:zsh
+
+# poetry
+zinit ice has='poetry' wait'0a' as='completion' id-as'poetry/completion' lucid \
+  atclone='poetry completions zsh > _poetry' \
+  atpull='%atclone'
+zinit light zdharma/null
+
+# eksctl
+zinit ice wait'0b' lucid from"gh-r" pick='/dev/null' sbin \
+  atclone='./eksctl completion zsh > _eksctl' \
+  atpull='%atclone'
+zinit light weaveworks/eksctl
+
+# docker-compose
+zinit ice wait'0c' lucid as'completion' \
+  id-as'docker-compose-completion' mv'docker-compose-completion -> _docker-compose'
+zinit snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose'
+
+# docker
+zinit ice wait'0c' lucid as"completion" \
+  id-as'docker-completion'
+zinit snippet OMZ::plugins/docker/_docker
+
+zinit ice lucid wait'0a' as'completion' blockf has'cargo'
+zinit snippet https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/_cargo
+
+zinit ice lucid wait'0a' as'completion' blockf has'rustc'
+zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/rust/_rust
+
+# dog
+zinit ice as='null' wait lucid from='gh-r' \
+  sbin='bin/dog' \
+  atclone='ln -sf completions/dog.zsh _dog' \
+  atpull='%atclone'
+zinit light ogham/dog
+
+# doggo
+zinit ice as='null' wait lucid from='gh-r' \
+  sbin='doggo' \
+  atclone='ln -sf completions/doggo.zsh _doggo' \
+  atpull='%atclone'
+zinit light mr-karan/doggo
 
 # lazygit
 zinit ice lucid wait as"program" from"gh-r" mv"lazygit* -> lazygit" id-as'lazygit'
 zinit light 'jesseduffield/lazygit'
 
 # git flow
-zinit ice lucid wait'3' id-as'git-flow-completion'
-zinit light petervanderdoes/git-flow-completion
+#zinit ice lucid wait lucid id-as'poetry/completion'
+    #'https://github.com/bobthecow/git-flow-completion/blob/master/git-flow-completion.zsh'
+
+zinit ice wait'0c' lucid as"completion" id-as'git-flow-completion'
+zinit snippet 'https://github.com/bobthecow/git-flow-completion/blob/master/git-flow-completion.zsh'
 
 # term highlight
 zinit ice pick"h.sh" id-as'hhighlighter'

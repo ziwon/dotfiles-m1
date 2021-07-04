@@ -62,12 +62,5 @@ if (( $+commands[direnv] )); then eval "$(direnv hook zsh)"; fi
 
 # asdf
 if (( $+commands[asdf] )); then
-  #source /usr/local/opt/asdf/asdf.sh
+  source /usr/local/opt/asdf/asdf.sh
 fi
-
-# poetry
-# source $ASDF_DATA_DIR/installs/poetry/1.1.4/pyvenv.cfg
-# poetry config virtualenvs.in-project true
-
-# kubectl
-# source <(kubectl completion zsh)
