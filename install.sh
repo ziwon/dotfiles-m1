@@ -62,6 +62,9 @@ case $1 in
   python)
     source ./python/install.sh
     ;;
+  rust)
+    source ./rust/install.sh
+    ;;
   ruby)
     source ./ruby/install.sh
     ;;

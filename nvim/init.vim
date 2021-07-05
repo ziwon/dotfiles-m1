@@ -50,12 +50,24 @@ Plug 'vim-syntastic/syntastic'
 Plug 'jiangmiao/auto-pairs'
 Plug 'juliosueiras/vim-terraform-completion'
 Plug 'juliosueiras/vim-terraform-snippets'
+Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
 
 " Vim only plugins
 if !has('nvim')
     Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Needed to make sebdah/vim-delve work on Vim
     Plug 'Shougo/vimshell.vim'                  " Needed to make sebdah/vim-delve work on Vim
 endif
+
+Plug 'autozimu/LanguageClient-neovim', {
+\ 'branch': 'next',
+\ 'do': 'bash install.sh',
+\ }
+
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['rust-analyzer'],
+\ }
 
 " Language support
 Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
