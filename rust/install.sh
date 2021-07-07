@@ -19,7 +19,7 @@ cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 source /usr/local/opt/asdf/asdf.sh
 
 echo "Installing rust.."
-asdf-add rust
+asdf plugin-add rust
 asdf install rust latest
 asdf global rust latest
 asdf reshim rust
