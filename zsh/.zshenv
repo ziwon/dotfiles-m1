@@ -30,6 +30,8 @@ mkdir -p \
 # zsh
 export ZDOTDIR=${XDG_CONFIG_HOME}/zsh
 export ZSH_CACHE_DIR=${XDG_CACHE_HOME:=$HOME/.cache}/zsh
+mkdir -p \
+  $ZSH_CACHE_DIR/completions || true
 
 # vim
 export VIMDOTDIR=$XDG_CONFIG_HOME/nvim
@@ -41,8 +43,8 @@ export TMUX_CONFIG=${TMUX_HOME}/tmux.conf
 export TMUX_PLUGIN_MANAGER_PATH=${TMUX_HOME}/plugins
 
 # z
-export _Z_DATA=$XDG_DATA_HOME/z/.z
-[[  -f ${_Z_DATA} ]] || mkdir -p ${_Z_DATA:h} && touch ${_Z_DATA}
+export ZSHZ_DATA=$XDG_DATA_HOME/z/.z
+mkdir -p ${ZSHZ_DATA:h} 2>/dev/null && touch ${ZSHZ_DATA}
 
 # aws
 export AWS_SHARED_CREDENTIALS_FILE=${XDG_CONFIG_HOME}/aws/credentials

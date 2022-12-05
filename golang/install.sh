@@ -8,7 +8,7 @@ EOF
 cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # enable asdf
-source /usr/local/opt/asdf/asdf.sh
+source /opt/homebrew/bin/asdf
 
 echo "Installing golang.."
 asdf-add golang

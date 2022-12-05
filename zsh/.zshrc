@@ -3,13 +3,15 @@
 
 PS1="READY > "
 
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # zinit install & config
-if [[ ! -f "$ZINIT[BIN_DIR]/zinit.zsh" ]]; then
-  git clone https://github.com/zdharma/zinit "${ZINIT[BIN_DIR]}"
-fi
+if [[ ! -d "$ZINIT_HOME" ]]; then
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi 
+source "${ZINIT_HOME}/zinit.zsh"
 
-source "$ZINIT[BIN_DIR]/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 

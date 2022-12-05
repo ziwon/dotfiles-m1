@@ -3,10 +3,10 @@
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit id-as'z-a-rust' light-mode for zinit-zsh/z-a-rust
-zinit id-as'z-a-as-monitor' light-mode for zinit-zsh/z-a-as-monitor
-zinit id-as'z-a-patch-dl' light-mode for zinit-zsh/z-a-patch-dl
-zinit id-as'z-a-bin-gem-node' light-mode for zinit-zsh/z-a-bin-gem-node
+# zinit id-as'z-a-rust' light-mode for zinit-zsh/z-a-rust
+# zinit id-as'z-a-as-monitor' light-mode for zinit-zsh/z-a-as-monitor
+# zinit id-as'z-a-patch-dl' light-mode for zinit-zsh/z-a-patch-dl
+# zinit id-as'z-a-bin-gem-node' light-mode for zinit-zsh/z-a-bin-gem-node
 
 # theme
 zinit ice depth=1 lucid id-as'p10k'
@@ -57,7 +57,7 @@ zinit ice wait'0b' lucid id-as'kubectl'
 zinit snippet OMZ::plugins/kubectl/kubectl.plugin.zsh
 
 zinit ice wait'0c' lucid id-as'kube-fzf'
-zinit snippet 'https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/master/kubectl_fzf.plugin.zsh'
+zinit snippet 'https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/main/shell/kubectl_fzf.plugin.zsh'
 
 # delta
 zinit ice wait'0c' lucid id-as'delta' \
@@ -69,7 +69,7 @@ zinit light dandavison/delta
 
 # z
 zinit ice wait blockf lucid id-as'z'
-zinit light rupa/z
+zinit light agkozak/zsh-z
 
 # z tab completion
 zinit ice wait lucid id-as'fz'

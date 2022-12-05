@@ -51,6 +51,7 @@ path=(
   ${GOBIN}
   ${CARGO_HOME}/bin(N-/)
   ${ASDF_DATA_DIR}/shims(N-/)
+  ${ZINIT_HOME}/bin
   /usr/local/{bin,sbin}
   /opt/homebrew/bin
   $path
@@ -59,8 +60,3 @@ path=(
 # hook
 if (( $+commands[direnv] )); then eval "$(direnv hook zsh)"; fi
 
-
-# asdf
-if (( $+commands[asdf] )); then
-  source /usr/local/opt/asdf/asdf.sh
-fi

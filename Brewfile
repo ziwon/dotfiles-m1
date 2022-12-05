@@ -48,7 +48,7 @@ brew 'zsh-completions'
 brew 'git'
 brew 'diff-so-fancy'
 brew 'git-extras'
-brew 'git-flow-avh'
+##brew 'git-flow-avh'
 brew 'git-recent'
 brew 'gitmoji'
 brew 'grv'
@@ -60,7 +60,7 @@ brew 'automake'
 brew 'gcc'
 brew 'make'
 
-## dev - env
+## dev - env - should be replaced with asdf
 brew 'autoenv'
 brew 'direnv'
 brew 'goenv'
