@@ -9,20 +9,19 @@ cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 # Install vim plugin manager
 echo "Installing plug manager"
-if [[ ! -f ${XDG_CONFIG_HOME}/nvim/autoload/plug.vim ]]; then
-  mkdir -p ${XDG_CONFIG_HOME}/nvim/autoload
-  curl -fLo ${XDG_CONFIG_HOME}/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [[ ! -f ${XDG_DATA_HOME}/nvim/site/autoload/plug.vim ]]; then
+  mkdir -p ${XDG_DATA_HOME}/nvim/site/autoload
+  curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-# enable asdf
-source /usr/local/opt/asdf/asdf.sh
-
 echo "Installing nvim.."
-asdf-add neovim
-asdf install neovim nightly
-asdf global neovim nightly
-asdf reshim neovim 
+asdf plugin list 2>/dev/null | grep -E 'neovim' &>/dev/null || {
+  asdf plugin add neovim
+  asdf install neovim nightly
+  asdf global neovim nightly
+  asdf reshim neovim 
+}
 
 echo "Copying nvim.ini"
 mkdir -p $VIMDOTDIR

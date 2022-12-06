@@ -99,10 +99,10 @@ zinit ice wait lucid id-as'cht-completion' \
 zinit snippet https://cheat.sh/:zsh
 
 # poetry
-zinit ice has='poetry' wait'0a' as='completion' id-as'poetry/completion' lucid \
-  atclone='poetry completions zsh > _poetry' \
-  atpull='%atclone'
-zinit light zdharma/null
+# zinit ice has='poetry' wait'0a' as='completion' id-as'poetry/completion' lucid \
+#   atclone='poetry completions zsh > _poetry' \
+#   atpull='%atclone'
+# zinit light zdharma/null
 
 # eksctl
 zinit ice wait'0b' lucid from"gh-r" pick='/dev/null' sbin \

@@ -36,9 +36,9 @@ link .zshrc       $ZDOTDIR/.zshrc
 
 # Fix a problem to load .zshenv with ZDOTDIR in Tmux
 # # https://www.khasegawa.net/posts/2018/12/fix-zsh-environment-variables/
-[[ ! -f "~/.zshenv" ]] && {
-  echo "export ZDOTDIR=${HOME}/.config/zsh; source ${ZDOTDIR}/.zshenv" | tee ~/.zshenv
-}
+ [[ ! -f "~/.zshenv" ]] && {
+   echo "export ZDOTDIR=${HOME}/.config/zsh; source ${ZDOTDIR}/.zshenv" | tee ~/.zshenv
+ }
 
 # back to root directory
 cd -

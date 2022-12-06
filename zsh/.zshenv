@@ -60,8 +60,8 @@ export GOENV_GOPATH_PREFIX=$XDG_DATA_HOME/go
 export GOBIN=$XDG_DATA_HOME/go/bin
 
 # rust
-export CARGO_HOME=${XDG_CACHE_HOME}/cargo
-export RUSTUP_HOME=${XDG_CACHE_HOME}/rustup
+export CARGO_HOME=$XDG_CACHE_HOME/cargo
+export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 
 # nodejs
 export NODENV_ROOT=$XDG_DATA_HOME/nodenv
@@ -75,8 +75,8 @@ export NPM_CONFIG_STORE_DIR=$XDG_CACHE_HOME/pnpm-store
 export PIPX_HOME=$XDG_DATA_HOME/pipx
 export PIPX_BIN_DIR=$XDG_DATA_HOME/pipx/bin
 export POETRY_HOME=$XDG_DATA_HOME/poetry
-export PYTHON_EGG_CACHE=${XDG_CACHE_HOME}/python-eggs
-export POETRY_HOME=${XDG_DATA_HOME}/poetry
+export PYTHON_EGG_CACHE=$XDG_CACHE_HOME/python-eggs
+export POETRY_HOME=$XDG_DATA_HOME/poetry
 
 # ruby
 export RBENV_ROOT=$XDG_DATA_HOME/rbenv
@@ -87,16 +87,14 @@ export BUNDLE_USER_CACHE=$XDG_CACHE_HOME/bundle
 export BUNDLE_USER_PLUGIN=$XDG_DATA_HOME/bundle
 
 # gnupg
-export GNUPGHOME=${XDG_DATA_HOME}/gnupg
+export GNUPGHOME=$XDG_DATA_HOME/gnupg
 
 # ripgrep
-export RIPGREP_CONFIG_PATH=${XDG_CONFIG_HOME}/ripgrep/config
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 
 # asdf
-export ASDF_DATA_DIR=${XDG_DATA_HOME}/asdf
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=${XDG_CACHE_HOME}/asdf/.tool-versions
-[[ -d ${XDG_CACHE_HOME}/asdf ]] || mkdir -p ${XDG_CACHE_HOME}/asdf
-[[ -f ${ASDF_DEFAULT_TOOL_VERSIONS_FILENAME} ]] || touch ${ASDF_DEFAULT_TOOL_VERSIONS_FILENAME}
+export ASDF_DIR=/opt/homebrew/opt/asdf/libexec
+[[ -s "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
 
 # zinit
 [[ -e $BASH ]] || {

@@ -15,9 +15,6 @@ EOF
 
 cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
-# enable asdf
-source /usr/local/opt/asdf/asdf.sh
-
 echo "Installing rust.."
 asdf plugin-add rust
 asdf install rust latest
