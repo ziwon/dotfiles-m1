@@ -7,7 +7,7 @@ export LS_COLORS='gxfxbEaEBxxEhEhBaDaCaD'
 export COLORTERM='truecolor'
 
 # zsh theme
-export BASE16_THEME='embers'  # codeschool, flat, material-palenight, embers and more: https://glitchbone.github.io/vscode-base16-term/
+export BASE16_THEME='atelier-lakeside'  # codeschool, flat, material-palenight, embers and more: https://glitchbone.github.io/vscode-base16-term/
 
 # vim theme
 export VIM_COLOR_SCHEME="base16-${BASE16_THEME}" # twilight, onedark, material-dark, grayscale-dark
