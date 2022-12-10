@@ -15,17 +15,22 @@ Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdo
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 
 " General plugins
-Plug 'Shougo/deoplete.nvim', { 'do': ':updateremoteplugins' }
+Plug 'MattesGroeger/vim-bookmarks'
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':updateremoteplugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
+Plug 'Shougo/vimshell.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/calendar.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'juliosueiras/vim-terraform-snippets'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -33,26 +38,21 @@ Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'sbdchd/neoformat'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'sbdchd/neoformat'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'sebdah/vim-delve'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tomlion/vim-solidity'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
-Plug 'tomlion/vim-solidity'
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
-Plug 'jiangmiao/auto-pairs'
-Plug 'juliosueiras/vim-terraform-completion'
-Plug 'juliosueiras/vim-terraform-snippets'
-Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
+Plug 'vimwiki/vimwiki'
+Plug 'vmchale/just-vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
 
 " Vim only plugins
 if !has('nvim')
@@ -71,32 +71,31 @@ let g:LanguageClient_serverCommands = {
 
 " Language support
 Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
+Plug 'andrewstuart/vim-kubernetes'             " Kubernetes support
 Plug 'cespare/vim-toml'                        " toml syntax highlighting
 Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
 Plug 'dag/vim-fish'                            " Fish syntax highlighting
+Plug 'dart-lang/dart-vim-plugin'               " Dart syntax highlighting
 Plug 'digitaltoad/vim-pug'                     " Pug syntax highlighting
 Plug 'fatih/vim-go'                            " Go support
-Plug 'python/black'                            " Python Code Formatter
 Plug 'fishbullet/deoplete-ruby'                " Ruby auto completion
 Plug 'hashivim/vim-terraform'                  " Terraform syntax highlighting
-Plug 'andrewstuart/vim-kubernetes'             " Kubernetes support
+Plug 'HerringtonDarkholme/yats.vim'            " TypeScript syntax highlighting
 Plug 'kylef/apiblueprint.vim'                  " API Blueprint syntax highlighting
 Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mxw/vim-jsx'                             " JSX syntax highlighting
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
 Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
+Plug 'python/black'                            " Python Code Formatter
+Plug 'rhysd/git-messenger.vim'                 " Show popup windows with the hidden messages from git
 Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
 Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
+Plug 'thosakwe/vim-flutter'                    " Vim Flutter
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 Plug 'zchee/deoplete-jedi'                     " Go auto completion
 Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim'            " TypeScript syntax highlighting
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'rhysd/git-messenger.vim'                 " Show popup windows with the hidden messages from git
-" Plug 'wakatime/vim-wakatime'                   " Automatic time tracking and metrics from programing activity
-Plug 'dart-lang/dart-vim-plugin'               " Dart syntax highlighting
-Plug 'thosakwe/vim-flutter'                    " Vim Flutter
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'

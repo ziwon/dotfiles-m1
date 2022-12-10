@@ -124,7 +124,7 @@ zinit ice lucid wait'0a' as'completion' blockf has'cargo'
 zinit snippet https://raw.githubusercontent.com/rust-lang/cargo/master/src/etc/_cargo
 
 zinit ice lucid wait'0a' as'completion' blockf has'rustc'
-zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/rust/_rust
+zinit snippet https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/rust/_rustc
 
 # dog
 zinit ice as='null' wait lucid from='gh-r' \

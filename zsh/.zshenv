@@ -93,6 +93,8 @@ export GNUPGHOME=$XDG_DATA_HOME/gnupg
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 
 # asdf
+export ASDF_HOME=$HOME/.asdf
+export ASDF_USER_SHIMS=/$ASDF_HOME/.shims
 export ASDF_DIR=/opt/homebrew/opt/asdf/libexec
 [[ -s "$ASDF_DIR/asdf.sh" ]] && source "$ASDF_DIR/asdf.sh"
 

@@ -17,11 +17,12 @@ cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 echo "Installing rust.."
 asdf plugin-add rust
-asdf install rust latest
-asdf global rust latest
+asdf install rust 1.63.0
+asdf global rust 1.63.0
 asdf reshim rust
 
-rustup toolchain add nightly
+rustup toolchain add stable
+#rustup toolchain add nightly
 rustup component add clippy
 rustup component add rustfmt
 rustup component add rust-src
