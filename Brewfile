@@ -165,7 +165,7 @@ cask 'vlc'
 cask 'wireshark'
 
 # Quicklook
-cask 'qlcolorcode'
+#cask 'qlcolorcode'
 cask 'qlimagesize'
 cask 'qlmarkdown'
 cask 'qlstephen'

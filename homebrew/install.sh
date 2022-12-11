@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 cat << EOF
 █░█ █▀█ █▀▄▀█ █▀▀ █▄▄ █▀█ █▀▀ █░█░█
@@ -25,7 +24,7 @@ if [[ `uname -m` == "arm64" ]]; then
     pushd ~ &> /dev/null
     mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
     sudo mv homebrew /opt/homebrew
-    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile 
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
     popd &> /dev/null
   fi

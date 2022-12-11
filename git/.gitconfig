@@ -85,4 +85,7 @@
 [include]
 	path = .gitalias.txt
 [gpg]
-	program = /opt/homebrew/bin/gpg
+	program = gpg
+
+[url "git@github-qraft:qraft-technologies/"]
+  insteadOf = git@github.com:qraft-techonologies/

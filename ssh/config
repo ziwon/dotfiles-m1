@@ -29,3 +29,8 @@ Host github.com
 # Default
 Host *
   User aaron
+
+Host github-qraft
+  Hostname github.com
+  User qrtaron
+  IdentityFile ~/.ssh/qraft-aaron-m1

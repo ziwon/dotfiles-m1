@@ -412,17 +412,24 @@ let g:coq_settings = {
 
 lua << EOF
 local lsp = require "lspconfig"
-local coq = require "coq" 
+local coq = require "coq"
 
 require("mason").setup()
 require("mason-lspconfig").setup({
+  -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/lua/mason-lspconfig/mappings/server.lua
   ensure_installed = { "awk_ls",
     \ "bashls",
     \ "clangd",
+    \ "cmake",
     \ "cssls",
+    \ "dockerls",
     \ "cssmodules_ls",
     \ "golangci_lint_ls",
     \ "gopls",
+    \ "gradle_ls",
+    \ "graphql",
+    \ "hls",
+    \ "html",
     \ "jsonls",
     \ "jdtls",
     \ "quick_lint_js",
@@ -449,6 +456,16 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+lsp.bashls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+lsp.cmake.setup {
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
 lsp.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -467,7 +484,15 @@ lsp.rust_analyzer.setup{
       ["rust-analyzer"] = {}
     }
 }
+
+lsp.terraformls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
 EOF
+
+autocmd BufWritePre *.tfvars lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 "----------------------------------------------
 " Plugin: nvim-treesitter/nvim-treesitter
 "----------------------------------------------
