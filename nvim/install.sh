@@ -7,6 +7,8 @@ EOF
 
 cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
+
+
 # Install vim plugin manager
 echo "Installing plug manager"
 if [[ ! -f ${XDG_DATA_HOME}/nvim/site/autoload/plug.vim ]]; then
