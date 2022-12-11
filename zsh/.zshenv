@@ -109,3 +109,5 @@ export ASDF_DIR=/opt/homebrew/opt/asdf/libexec
   ZINIT[ZCOMPDUMP_PATH]=$XDG_CACHE_HOME/zsh/zcompdump
   export ZINIT
 }
+
+# . "/Users/aaron/.cache/cargo/env"

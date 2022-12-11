@@ -5,102 +5,76 @@
 set runtimepath+=$XDG_CONFIG_HOME/nvim
 
 "----------------------------------------------
-" Plugin management
-"----------------------------------------------
-call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+" Plug management
+"---------------------------------------------
+set nocompatible                                 " be iMproved, required
+filetype off                                     " required
+
+call plug#begin()
 
 " Dependencies
-Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
-Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
-Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
+Plug 'godlygeek/tabular'                       " This must come before plasticboy/vim-markdown
+Plug 'tpope/vim-rhubarb'                       " Depenency for tpope/fugitive
+
+" Auto completion
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 
 " General plugins
-Plug 'MattesGroeger/vim-bookmarks'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':updateremoteplugins' }
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
-Plug 'Shougo/vimshell.vim'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'bling/vim-airline'
+Plug 'Xuyuanp/nerdtree-git-plugin'             " Add git support for nerdtree
+Plug 'chrisbra/csv.vim'                        " CSV file helpers
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
+Plug 'ctrlpvim/ctrlp.vim'                      " CtrlP is installed to support tag finding in vim-go
+Plug 'dense-analysis/ale'                      " Linting support for multiple languages
 Plug 'editorconfig/editorconfig-vim'
-Plug 'itchyny/calendar.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'juliosueiras/vim-terraform-completion'
-Plug 'juliosueiras/vim-terraform-snippets'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'majutsushi/tagbar'
+Plug 'mg979/vim-visual-multi'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
 Plug 'neomake/neomake'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'rust-lang/rust.vim',         { 'for': 'rust' }
-Plug 'ryanoasis/vim-devicons'
 Plug 'sbdchd/neoformat'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'sebdah/vim-delve'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tomlion/vim-solidity'
+Plug 'smithbm2316/centerpad.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
-Plug 'vimwiki/vimwiki'
+Plug 'vim-airline/vim-airline'
 Plug 'vmchale/just-vim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Vim only plugins
-if !has('nvim')
-    Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Needed to make sebdah/vim-delve work on Vim
-    Plug 'Shougo/vimshell.vim'                  " Needed to make sebdah/vim-delve work on Vim
-endif
-
-Plug 'autozimu/LanguageClient-neovim', {
-\ 'branch': 'next',
-\ 'do': 'bash install.sh',
-\ }
-
-let g:LanguageClient_serverCommands = {
-\ 'rust': ['rust-analyzer'],
-\ }
 
 " Language support
+Plug 'HerringtonDarkholme/yats.vim'            " TypeScript syntax
 Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
-Plug 'andrewstuart/vim-kubernetes'             " Kubernetes support
-Plug 'cespare/vim-toml'                        " toml syntax highlighting
+Plug 'cespare/vim-toml'                        " TOML syntax highlighting
 Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
 Plug 'dag/vim-fish'                            " Fish syntax highlighting
-Plug 'dart-lang/dart-vim-plugin'               " Dart syntax highlighting
-Plug 'digitaltoad/vim-pug'                     " Pug syntax highlighting
 Plug 'fatih/vim-go'                            " Go support
-Plug 'fishbullet/deoplete-ruby'                " Ruby auto completion
+Plug 'rust-lang/rust.vim'                      " Rust support
 Plug 'hashivim/vim-terraform'                  " Terraform syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim'            " TypeScript syntax highlighting
+Plug 'jparise/vim-graphql'                     " GraphQL syntax highlighting and indentation
 Plug 'kylef/apiblueprint.vim'                  " API Blueprint syntax highlighting
+Plug 'leafgarland/typescript-vim'              " TypeScript syntax highlighting
 Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mxw/vim-jsx'                             " JSX syntax highlighting
-Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
 Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
-Plug 'python/black'                            " Python Code Formatter
-Plug 'rhysd/git-messenger.vim'                 " Show popup windows with the hidden messages from git
-Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
-Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
-Plug 'thosakwe/vim-flutter'                    " Vim Flutter
-Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-Plug 'zchee/deoplete-jedi'                     " Go auto completion
 Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'Shatur/neovim-ayu'
 
-call plug#end()
+" Load last
+Plug 'ryanoasis/vim-devicons'                  " Icons for NerdTree / Airline etc
+
+call plug#end()                                " End Plug config section
 
 "----------------------------------------------
 " General settings
@@ -112,12 +86,11 @@ set autowrite                     " write when switching buffers
 set autowriteall                  " write on :quit
 set clipboard=unnamedplus
 set colorcolumn=81                " highlight the 80th column as an indicator
-set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
 set list                          " show trailing whitespace
-set listchars=tab:\|\ ,trail:▫
+set listchars=tab:\·\ ,extends:›,precedes:‹,nbsp:˙,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
 set nowrap
@@ -131,20 +104,15 @@ set softtabstop=2
 set tabstop=2
 set title                         " let vim set the terminal title
 set updatetime=100                " redraw the status bar often
-set shiftwidth=4                  " virtual tabstops using spaces
-set nocompatible
 
 " neovim specific settings
-let g:python_host_prog  = $ASDF_USER_SHIMS . '/python'
-let g:python3_host_prog = $ASDF_USER_SHIMS . '/python3'
-
-" Enable mouse if possible
-if has('mouse')
-    set mouse=a
-endif
-
-if has("autocmd")
-    filetype plugin indent on
+if has('nvim')
+    " Set the Python binaries neovim is using. Please note that you will need to
+    " install the neovim package for these binaries separately like this for
+    " example:
+    " pip3.6 install -U neovim
+    let g:python_host_prog  = $ASDF_USER_SHIMS . '/python'
+    let g:python3_host_prog = $ASDF_USER_SHIMS . '/python3'
 endif
 
 " Allow vim to set a custom font or color for a word
@@ -162,28 +130,37 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Center the screen quickly
 nnoremap <space> zz
 
-" Hide Info(Preview) window after completions
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"----------------------------------------------
+" Editing
+"----------------------------------------------
+" Compete options for the pop up menu for autocompletion.
+set completeopt=menu,noselect
+
+" remove the horrendous preview window
+set completeopt-=preview
 
 "----------------------------------------------
 " Colors
 "----------------------------------------------
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 set background=dark
-set termguicolors
+
+" Material colorscheme settings
+let g:material_theme_style = 'darker-community'
+
+" One colorscheme settings
+let g:one_allow_italics = 1
+
 colorscheme $VIM_COLOR_SCHEME
 
-hi Normal     ctermbg=NONE guibg=NONE
-hi LineNr     ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
-hi Comment    guifg=#5C6370 ctermfg=59
-
-" Override the search highlight color with a combination that is easier to
-" read. The default PaperColor is dark green backgroun with black foreground.
-"
-" Reference:
-" - http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
-highlight Search guibg=DeepPink4 guifg=White ctermbg=53 ctermfg=White
 
 " Toggle background with <leader>bg
 map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
@@ -216,8 +193,8 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " Move between buffers with Shift + arrow key...
-nnoremap <S-Left> :bprevious<cr>
-nnoremap <S-Right> :bnext<cr>
+nnoremap <Left> :bprevious<cr>
+nnoremap <Right> :bnext<cr>
 
 " ... but skip the quickfix when navigating
 augroup qf
@@ -226,16 +203,19 @@ augroup qf
 augroup END
 
 " Fix some common typos
-cnoreabbrev W! w!
-cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
-cnoreabbrev Wq wq
-cnoreabbrev Wa wa
-cnoreabbrev wQ wq
-cnoreabbrev WQ wq
-cnoreabbrev W w
 cnoreabbrev Q q
+cnoreabbrev Q! q!
 cnoreabbrev Qall qall
+cnoreabbrev Qall! qall!
+cnoreabbrev Qa qa
+cnoreabbrev Qw qw
+cnoreabbrev Qwa qwa
+cnoreabbrev W w
+cnoreabbrev W! w!
+cnoreabbrev WQ wq
+cnoreabbrev Wa wa
+cnoreabbrev Wq wq
+cnoreabbrev wQ wq
 
 "----------------------------------------------
 " Splits
@@ -252,63 +232,9 @@ nnoremap <leader>h :split<cr>
 nnoremap <leader>q :close<cr>
 
 "----------------------------------------------
-" Plugin: MattesGroeger/vim-bookmarks
+" Tags
 "----------------------------------------------
-" Auto save bookmarks
-let g:bookmark_auto_save = 1
-
-" Store the bookmarks in the projects
-let g:bookmark_save_per_working_dir = 1
-
-" Disable the default key mappings
-let g:bookmark_no_default_key_mappings = 1
-
-" Configure key mappings
-" This part also fixes conflicts with NERDTree
-function! BookmarkMapKeys()
-    nmap Mm :BookmarkToggle<cr>
-    nmap Mi :BookmarkAnnotate<cr>
-    nmap Mn :BookmarkNext<cr>
-    nmap Mp :BookmarkPrev<cr>
-    nmap Ma :BookmarkShowAll<cr>
-    nmap Mc :BookmarkClear<cr>
-    nmap Mx :BookmarkClearAll<cr>
-    nmap Mkk :BookmarkMoveUp
-    nmap Mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap Mm
-    unmap Mi
-    unmap Mn
-    unmap Mp
-    unmap Ma
-    unmap Mc
-    unmap Mx
-    unmap Mkk
-    unmap Mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
-
-"----------------------------------------------
-" Plugin: Shougo/deoplete.nvim
-"----------------------------------------------
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.terraform = '[^ *\t"{=$]\w*'
-
-if has('nvim')
-    " Enable deoplete on startup
-    let g:deoplete#enable_at_startup = 1
-endif
-
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
+set tags=tags;/
 
 "----------------------------------------------
 " Plugin: bling/vim-airline
@@ -324,7 +250,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 0
 
 " Enable powerline fonts.
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " Explicitly define some symbols that did not work well for me in Linux.
 if !exists('g:airline_symbols')
@@ -334,25 +260,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.maxlinenr = ''
 
 "----------------------------------------------
-" Plugin: vim-airline/vim-airline-theme
-"----------------------------------------------
-let g:airline_theme = $VIM_AIRLINE_THEME
-
-"----------------------------------------------
-" Plugin: ryanoasis/vim-devicons
-"----------------------------------------------
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_ctrlp = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-
-"----------------------------------------------
-" : christoomey/vim-tmux-navigator
+" Plugin: christoomey/vim-tmux-navigator
 "----------------------------------------------
 " tmux will send xterm-style keys when its xterm-keys option is on.
 if &term =~ '^screen'
@@ -367,11 +275,11 @@ let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 1
 
 " Move between splits with ctrl+h,j,k,l
-" nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-" nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-" nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-" nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 "----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
@@ -406,16 +314,28 @@ let g:calendar_week_number = 1                " Show week numbers
 let g:calendar_view = "days"                  " Set days as the default view
 
 "----------------------------------------------
+" Plugin: 'junegunn/goyo.vim'
+"----------------------------------------------
+" Set the default width of Goyo.
+let g:goyo_width = 120
+
+"----------------------------------------------
 " Plugin: 'junegunn/fzf.vim'
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
+nnoremap <a-g> :Commits<cr>
+nnoremap <a-s-g> :BCommits<cr>
+nnoremap <a-d> :GitFiles?<cr>
+nnoremap <a-c> :Commands<cr>
+nnoremap <a-f> :Ag<cr>
+nnoremap <a-r> :Commands<cr>
+
+" Configure preview window
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 "----------------------------------------------
 " Plugin: 'majutsushi/tagbar'
 "----------------------------------------------
-
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-
 " Add shortcut for toggling the tag bar
 nnoremap <F3> :TagbarToggle<cr>
 
@@ -445,9 +365,31 @@ let g:tagbar_type_go = {
         \ 'ctype' : 't',
         \ 'ntype' : 'n'
     \ },
-    \ 'ctagsbin'  : '$GOBIN/gotags',
+    \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+"----------------------------------------------
+" Plugin: ms-jpq/coq_nvim
+"----------------------------------------------
+let g:coq_settings = {
+    \ "auto_start": "shut-up"
+\ }
+
+"----------------------------------------------
+" Plugin: nvim-treesitter/nvim-treesitter
+"----------------------------------------------
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = "python",
+    highlight = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
+    },
+}
+EOF
 
 "----------------------------------------------
 " Plugin: plasticboy/vim-markdown
@@ -473,14 +415,6 @@ nnoremap <leader>a :Ack!<space>
 "----------------------------------------------
 " Plugin: neomake/neomake
 "----------------------------------------------
-" Setup to run neomake run automatically
-
-" Ref: https://github.com/neomake/neomake
-call neomake#configure#automake('w', 750)                " When writing a buffer (no delay)
-call neomake#configure#automake('nw', 750)          " When writing a buffer (no delay), and on normal mode changes (after 750ms).
-call neomake#configure#automake('rw', 1500)         " When reading a buffer (after 1s), and when writing (no delay).
-call neomake#configure#automake('nrwi', 700)        " Full config: when writing or reading a buffer, and on changes in insert and normal mode (after 1s; no delay when writing).
-
 " Configure signs.
 let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
 let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
@@ -493,15 +427,6 @@ let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 nnoremap <leader>d :NERDTreeToggle<cr>
 nnoremap <F2> :NERDTreeToggle<cr>
 
-" Directly open NerdTree on the file
-nnoremap <silent> <Leader>df :NERDTreeFind<CR>
-
-" Opens a NERDTree that closes on file selection,
-nnoremap <Leader>dq :let NERDTreeQuitOnOpen = 1<bar>NERDTreeToggle<CR>
-
-" Opens a persistent/pinned NERDTree.
-nnoremap <Leader>do :let NERDTreeQuitOnOpen = 0<bar>NERDTreeToggle<CR>
-
 " Files to ignore
 let NERDTreeIgnore = [
     \ '\~$',
@@ -512,11 +437,8 @@ let NERDTreeIgnore = [
     \ '^__pycache__$'
 \]
 
-" Open by default.
-let g:nerdtree_tabs_open_on_gui_startup=0
-
-" Don't close nerdtree after a file has opended
-let NERDTreeQuitOnOpen=0
+" Close vim if NERDTree is the only opened window.
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Show hidden files by default.
 let NERDTreeShowHidden = 1
@@ -524,115 +446,17 @@ let NERDTreeShowHidden = 1
 " Allow NERDTree to change session root.
 let g:NERDTreeChDirMode = 2
 
-" Automatically delete the buffer of the file deleted.
-let NERDTreeAutoDeleteBuffer = 1
-
-" Close vim if NERDTree is the only opened window.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-"----------------------------------------------
-" Plugin: Xuyuanp/nerdtree-git-plugin
-"----------------------------------------------
-
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-
 "----------------------------------------------
 " Plugin: sebdah/vim-delve
 "----------------------------------------------
 " Set the Delve backend.
-let g:delve_backend = "default"
+let g:delve_backend = "native"
 
 "----------------------------------------------
-" Plugin: Shougo/neosnippet
+" Plugin: smithbm2316/centerpad.nvim
 "----------------------------------------------
-" Disable the default snippets (needed since we do not install
-" Shougo/neosnippet-snippets).
-"
-" Below you can disable default snippets for specific languages. If you set the
-" language to _ it sets the default for all languages.
-let g:neosnippet#disable_runtime_snippets = {
-    \ 'go': 1
-\}
-
-" Keybindings
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-    \ neosnippet#expandable_or_jumpable() ?
-    \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-
-" Set the path to our snippets
-let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-
-"----------------------------------------------
-" Plugin: vimwiki/vimwiki
-"----------------------------------------------
-" Path to wiki
-let g:vimwiki_list = [{
-        \ 'path': '~/Dropbox/vimwiki',
-        \ 'syntax': 'markdown',
-        \ 'ext': '.vimwiki.markdown'}]
-
-au FileType vimwiki set expandtab
-au FileType vimwiki set shiftwidth=2
-au FileType vimwiki set softtabstop=2
-au FileType vimwiki set tabstop=2
-
-"----------------------------------------------
-" Plugin: 'terryma/vim-multiple-cursors'
-"----------------------------------------------
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_skip_key='<C-b>'
-
-"----------------------------------------------
-" Plugin: zchee/deoplete-go
-"----------------------------------------------
-" Enable completing of go pointers
-let g:deoplete#sources#go#pointer = 1
-
-"----------------------------------------------
-" Plugin: Vimjas/vim-python-pep8-indent
-"----------------------------------------------
-let g:pymode_indent = 0
-let g:pymode_rope_autoimport_bind = "<leader>ri"
-let g:pymode_rope_organize_imports_bind = '<leader>roi'
-let g:pymode_rope_extract_method_bind = '<leader>rm'
-let g:pymode_rope_extract_variable_bind = '<leader>rv'
-
-"----------------------------------------------
-" Plugin: vim-syntastic/syntastic
-"----------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:terraform_fmt_on_save=1
-let g:terraform_align=1
-let g:terraform_remap_spacebar=1
-
-"----------------------------------------------
-" Plug 'juliosueiras/vim-terraform-completion'
-"----------------------------------------------
-let g:terraform_completion_keys = 1
-let g:terraform_registry_module_completion = 1
+" Toggle centerpad with a key mapping.
+nnoremap <silent><leader>z <cmd>Centerpad<cr>
 
 "----------------------------------------------
 " Language: Golang
@@ -647,9 +471,6 @@ au FileType go nmap <F8> :GoMetaLinter<cr>
 au FileType go nmap <F9> :GoCoverageToggle -short<cr>
 au FileType go nmap <F10> :GoTest -short<cr>
 au FileType go nmap <F12> <Plug>(go-def)
-au FileType go nmap <leader>gcr :GoCallers<cr>
-au FileType go nmap <leader>gcl :GoCallees<cr>
-au FileType go nmap <leader>gr :GoRun<cr>
 au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
 au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
 au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
@@ -661,11 +482,7 @@ au FileType go nmap <leader>gdh <Plug>(go-def-split)
 au FileType go nmap <leader>gD <Plug>(go-doc)
 au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
 
-" Mapping Dlv
-au FileType go nmap <leader>gdd :DlvDebug . --build-flags="-gcflags='-N -l'" --<cr>
-au FileType go nmap <leader>gdt :DlvTest<cr>
-au FileType go nmap <leader>gdb :DlvToggleBreakpoint<cr>
-au FileType go nmap <leader>gdt :DlvAddTracepoint<cr>
+au filetype go inoremap <buffer> . .<C-x><C-o>
 
 " Run goimports when running gofmt
 let g:go_fmt_command = "goimports"
@@ -690,33 +507,68 @@ let g:go_echo_command_info = 1
 let g:go_auto_type_info = 1
 
 " Highlight variable uses
-let g:go_auto_sameids = 1
+let g:go_auto_sameids = 0
 
 " Fix for location list when vim-go is used together with Syntastic
 let g:go_list_type = "quickfix"
 
+" Using gopls to find definitions and information.
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
 " Add the failing test name to the output of :GoTest
 let g:go_test_show_name = 1
+
+" gometalinter configuration
+let g:go_metalinter_command = ""
+let g:go_metalinter_deadline = "5s"
+let g:go_metalinter_enabled = [
+    \ 'deadcode',
+    \ 'gas',
+    \ 'goconst',
+    \ 'gocyclo',
+    \ 'golint',
+    \ 'gosimple',
+    \ 'ineffassign',
+    \ 'vet',
+    \ 'vetshadow'
+\]
 
 " Set whether the JSON tags should be snakecase or camelcase.
 let g:go_addtags_transform = "snakecase"
 
 " neomake configuration for Go.
-let g:neomake_go_enabled_makers = [ 'go', 'golangci-lint' ]
-let g:neomake_go_golangci_lint_maker = {
-  \ 'exe': 'golangci-lint',
+let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
+let g:neomake_go_gometalinter_maker = {
   \ 'args': [
-  \   'run',
-  \   '--out-format=line-number',
-  \   '--print-issued-lines=false',
-  \   '--enable-all',
+  \   '--tests',
+  \   '--enable-gc',
+  \   '--concurrency=3',
+  \   '--fast',
+  \   '-D', 'aligncheck',
+  \   '-D', 'dupl',
+  \   '-D', 'gocyclo',
+  \   '-D', 'gotype',
+  \   '-E', 'misspell',
+  \   '-E', 'unused',
+  \   '%:p:h',
   \ ],
   \ 'append_file': 0,
-  \ 'output_stream': 'stdout',
-  \ 'cwd': '%:h',
   \ 'errorformat':
-  \ '%f:%l:%c: %m'
+  \   '%E%f:%l:%c:%trror: %m,' .
+  \   '%W%f:%l:%c:%tarning: %m,' .
+  \   '%E%f:%l::%trror: %m,' .
+  \   '%W%f:%l::%tarning: %m'
   \ }
+
+"----------------------------------------------
+" Language: Rust
+"----------------------------------------------
+au FileType rs set noexpandtab
+au FileType rs set shiftwidth=4
+au FileType rs set softtabstop=4
+au FileType rs set tabstop=4
+
 "----------------------------------------------
 " Language: apiblueprint
 "----------------------------------------------
@@ -812,6 +664,14 @@ au FileType make set softtabstop=2
 au FileType make set tabstop=2
 
 "----------------------------------------------
+" Language: Justfile
+"----------------------------------------------
+au FileType justfile set noexpandtab
+au FileType justfile set shiftwidth=2
+au FileType justfile set softtabstop=2
+au FileType justfile set tabstop=2
+
+"----------------------------------------------
 " Language: Markdown
 "----------------------------------------------
 au FileType markdown setlocal spell
@@ -845,40 +705,6 @@ au FileType python set shiftwidth=4
 au FileType python set softtabstop=4
 au FileType python set tabstop=4
 
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#show_call_signatures = "1"
-
-let g:jedi#goto_command = "<leader>jg"
-let g:jedi#goto_assignments_command = "<leader>ja"
-let g:jedi#goto_definitions_command = "<leader>jd"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>ju"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>jr"
-
-
-" Ref:
-" - Pylama is working with python 3.7, and looks more active than Pylava
-"     Fixed: https://github.com/klen/pylama/pull/129
-" - http://hiroki-sawano.hatenablog.com/entry/2018/11/11/151322
-" - https://github.com/pylava/pylava/wiki/Announcing-Pylava:-A-fork-of-Pylama-for-Python-3.7
-call neomake#configure#automake('nrwi', 100)
-let g:neomake_open_list = 3
-let g:neomake_python_enabled_makers = ['pylama']
-let g:neomake_python_pylama_maker = {
-        \ 'args': ['--format', 'parsable', '-o', expand('%:p') . '/.pylama.ini'],
-        \ 'errorformat': '%f:%l:%c: [%t] %m',
-        \ 'postprocess': function('neomake#makers#ft#python#PylamaEntryProcess'),
-        \ 'output_stream': 'stdout',
-        \ 'exe': 'pylama',
-        \ }
-
-
-" To run Black on save
-au BufWritePre *.py execute ':Black'
-
 "----------------------------------------------
 " Language: Ruby
 "----------------------------------------------
@@ -887,9 +713,6 @@ au FileType ruby set shiftwidth=2
 au FileType ruby set softtabstop=2
 au FileType ruby set tabstop=2
 
-" Enable neomake for linting.
-"au FileType ruby autocmd BufWritePost * Neomake
-
 "----------------------------------------------
 " Language: SQL
 "----------------------------------------------
@@ -897,19 +720,6 @@ au FileType sql set expandtab
 au FileType sql set shiftwidth=2
 au FileType sql set softtabstop=2
 au FileType sql set tabstop=2
-
-"----------------------------------------------
-" Language: Terraform
-"----------------------------------------------
-au FileType tf set omnifunc=terraformcomplete#Complete
-
-"----------------------------------------------
-" Language: Thrift
-"----------------------------------------------
-au FileType thrift set expandtab
-au FileType thrift set shiftwidth=2
-au FileType thrift set softtabstop=2
-au FileType thrift set tabstop=2
 
 "----------------------------------------------
 " Language: TOML
@@ -926,14 +736,6 @@ au FileType typescript set expandtab
 au FileType typescript set shiftwidth=4
 au FileType typescript set softtabstop=4
 au FileType typescript set tabstop=4
-
-"----------------------------------------------
-" Language: Vader
-"----------------------------------------------
-au FileType vader set expandtab
-au FileType vader set shiftwidth=2
-au FileType vader set softtabstop=2
-au FileType vader set tabstop=2
 
 "----------------------------------------------
 " Language: vimscript

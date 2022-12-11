@@ -20,7 +20,7 @@ asdf plugin list 2>/dev/null | grep -E 'neovim' &>/dev/null || {
   asdf plugin add neovim
   asdf install neovim nightly
   asdf global neovim nightly
-  asdf reshim neovim 
+  asdf reshim neovim
 }
 
 echo "Copying nvim.ini"
@@ -31,6 +31,7 @@ link init.vim $VIMDOTDIR/init.vim
 
 # install neovim python client
 exists pip && pip install neovim || true
+exists pip && pip install pynvim$ || true
 asdf reshim python
 
 # install nvim plugins
