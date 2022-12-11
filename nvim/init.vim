@@ -48,7 +48,9 @@ Plug 'sebdah/vim-delve'
 Plug 'smithbm2316/centerpad.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
+" Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vmchale/just-vim'
 
 " Language support
@@ -73,6 +75,7 @@ Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'Shatur/neovim-ayu'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Load last
 Plug 'ryanoasis/vim-devicons'                  " Icons for NerdTree / Airline etc
@@ -142,9 +145,16 @@ set completeopt=menu,noselect
 " remove the horrendous preview window
 set completeopt-=preview
 
+" get rid of unnecessary '--INSERT--'
+set noshowmode
+
 "----------------------------------------------
 " Colors
 "----------------------------------------------
+if !has('gui_running')
+  set t_Co=256
+endif
+
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -164,6 +174,50 @@ let g:one_allow_italics = 1
 
 colorscheme $VIM_COLOR_SCHEME
 
+" Lualine settings
+lua << EOF
+require('lualine').setup()
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+EOF
 
 " Toggle background with <leader>bg
 map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
@@ -238,29 +292,6 @@ nnoremap <leader>q :close<cr>
 " Tags
 "----------------------------------------------
 set tags=tags;/
-
-"----------------------------------------------
-" Plugin: bling/vim-airline
-"----------------------------------------------
-" Show status bar by default.
-set laststatus=2
-
-" Enable top tabline.
-let g:airline#extensions#tabline#enabled = 1
-
-" Disable showing tabs in the tabline. This will ensure that the buffers are
-" what is shown in the tabline at all times.
-let g:airline#extensions#tabline#show_tabs = 0
-
-" Enable powerline fonts.
-let g:airline_powerline_fonts = 0
-
-" Explicitly define some symbols that did not work well for me in Linux.
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch = ''
-let g:airline_symbols.maxlinenr = ''
 
 "----------------------------------------------
 " Plugin: christoomey/vim-tmux-navigator
@@ -385,18 +416,33 @@ local coq = require "coq"
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua",  
-        \ "rustfmt",
-        \ "rust_analyzer", 
-        \ "gopls",
-        \ "tflint", 
-        \ "terraform-ls",
-        \ "pyright", 
-        \ "python-lsp-server", 
-        \ "typescript-language-server", 
-        \ "shellcheck", 
-        \ "bash-language-server",
-    }
+  ensure_installed = { "awk_ls",
+    \ "bashls",
+    \ "clangd",
+    \ "cssls",
+    \ "cssmodules_ls",
+    \ "golangci_lint_ls",
+    \ "gopls",
+    \ "jsonls",
+    \ "jdtls",
+    \ "quick_lint_js",
+    \ "tsserver",
+    \ "kotlin_language_server",
+    \ "ltex",
+    \ "sumneko_lua",
+    \ "marksman",
+    \ "opencl_ls",
+    \ "pyright",
+    \ "rust_analyzer",
+    \ "sqls",
+    \ "taplo",
+    \ "tailwindcss",
+    \ "terraformls",
+    \ "tflint",
+    \ "vimls",
+    \ "vuels",
+    \ "yamlls",
+  }
 })
 
 local lsp_flags = {

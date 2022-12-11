@@ -10,8 +10,10 @@ export COLORTERM='truecolor'
 export BASE16_THEME='atelier-lakeside'  # codeschool, flat, material-palenight, embers and more: https://glitchbone.github.io/vscode-base16-term/
 
 # vim theme
-export VIM_COLOR_SCHEME="base16-${BASE16_THEME}" # twilight, onedark, material-dark, grayscale-dark
-export VIM_AIRLINE_THEME="base16_${BASE16_THEME}" # bubblegum # https://github.com/vim-airline/vim-airline/wiki/Screenshots
+#export VIM_COLOR_SCHEME="base16-${BASE16_THEME}" # twilight, onedark, material-dark, grayscale-dark
+#export VIM_AIRLINE_THEME="base16_${BASE16_THEME}" # bubblegum # https://github.com/vim-airline/vim-airline/wiki/Screenshots
+export VIM_COLOR_SCHEME="tokyonight-night"
+export VIM_AIRLINE_THEME="tokyonight-night"
 
 # tmux theme
 export TMUX_COLOR_SCHEME=${BASE16_THEME}
