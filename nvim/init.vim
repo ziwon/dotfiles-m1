@@ -20,6 +20,9 @@ Plug 'tpope/vim-rhubarb'                       " Depenency for tpope/fugitive
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
 
 " General plugins
 Plug 'Xuyuanp/nerdtree-git-plugin'             " Add git support for nerdtree
@@ -376,12 +379,55 @@ let g:coq_settings = {
     \ "auto_start": "shut-up"
 \ }
 
+lua << EOF
+local lsp = require "lspconfig"
+local coq = require "coq" 
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "sumneko_lua",  
+        \ "rustfmt",
+        \ "rust_analyzer", 
+        \ "gopls",
+        \ "tflint", 
+        \ "terraform-ls",
+        \ "pyright", 
+        \ "python-lsp-server", 
+        \ "typescript-language-server", 
+        \ "shellcheck", 
+        \ "bash-language-server",
+    }
+})
+
+local lsp_flags = {
+  debounce_text_changes = 150,
+}
+
+lsp.pyright.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+lsp.tsserver.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
+lsp.rust_analyzer.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    -- Server-specific settings...
+    settings = {
+      ["rust-analyzer"] = {}
+    }
+}
+EOF
 "----------------------------------------------
 " Plugin: nvim-treesitter/nvim-treesitter
 "----------------------------------------------
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = "python",
+    ensure_installed = "python", "rust", "go", "bash", "javascript", "typescript",
     highlight = {
         enable = true,
     },

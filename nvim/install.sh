@@ -31,13 +31,12 @@ link init.vim $VIMDOTDIR/init.vim
 
 # install neovim python client
 exists pip && pip install neovim || true
-exists pip && pip install pynvim$ || true
+exists pip && pip install pynvim || true
 asdf reshim python
 
 # install nvim plugins
 echo "Installing nvim plugins.."
 nvim +PlugInstall +qall > /dev/null
-
 nvim "+silent call dein#install()" +UpdateRemotePlugins +qall > /dev/null
 
 cd -
