@@ -47,41 +47,8 @@ cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 source ./zsh/.zshenv
 
 case $1 in
-  brew)
-    source ./homebrew/install.sh
-    ;;
-  zsh)
-    source ./zsh/install.sh
-    ;;
-  git)
-    source ./git/install.sh
-    ;;
-  tmux)
-    source ./tmux/install.sh
-    ;;
-  python)
-    source ./python/install.sh
-    ;;
-  rust)
-    source ./rust/install.sh
-    ;;
-  ruby)
-    source ./ruby/install.sh
-    ;;
-  vim|nvim)
-    source ./nvim/install.sh
-    ;;
-  golang)
-    source ./golang/install.sh
-    ;;
-  nnn)
-    source ./nnn/install.sh
-    ;;
-  ssh)
-    source ./ssh/install.sh
-    ;;
-  gpg)
-    source ./gpg/install.sh
+  *)
+    source ./$1/install.sh
     ;;
   all)
     source ./homebrew/install.sh
