@@ -71,6 +71,9 @@ Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 
+Plug 'jmcantrell/vim-virtualenv'               " For working with Python Virtualenv
+Plug 'cjrh/vim-conda'                          " For working with Conda env
+
 " Colorschemes
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'

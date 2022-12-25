@@ -32,6 +32,7 @@ link .zshenv      $ZDOTDIR/.zshenv
 link .zprofile    $ZDOTDIR/.zprofile
 link .zlogin      $ZDOTDIR/.zlogin
 link .zshrc       $ZDOTDIR/.zshrc
+link .zshrc.conda $ZDOTDIR/.zshrc.conda
 
 
 # Fix a problem to load .zshenv with ZDOTDIR in Tmux
