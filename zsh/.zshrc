@@ -24,3 +24,4 @@ source "$ZDOTDIR"/func.zsh
 source "$ZDOTDIR"/bindkey.zsh
 source "$ZDOTDIR"/prompt.zsh
 source "$ZDOTDIR"/p10k.zsh
+source "$ZDOTDIR"/.zshrc.conda

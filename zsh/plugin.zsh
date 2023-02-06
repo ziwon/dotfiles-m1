@@ -44,6 +44,10 @@ zinit ice wait blockf lucid id-as'zsh-completions' \
   atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
 
+# other completion
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/terraform/terraform.plugin.zsh
+
 # fzf
 zinit ice wait'0a' lucid id-as'fzf-shell'
 zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh'
@@ -139,17 +143,6 @@ zinit ice as='null' wait lucid from='gh-r' \
   atclone='ln -sf completions/doggo.zsh _doggo' \
   atpull='%atclone'
 zinit light mr-karan/doggo
-
-# lazygit
-zinit ice lucid wait as"program" from"gh-r" mv"lazygit* -> lazygit" id-as'lazygit'
-zinit light 'jesseduffield/lazygit'
-
-# git flow
-#zinit ice lucid wait lucid id-as'poetry/completion'
-    #'https://github.com/bobthecow/git-flow-completion/blob/master/git-flow-completion.zsh'
-
-zinit ice wait'0c' lucid as"completion" id-as'git-flow-completion'
-zinit snippet 'https://github.com/bobthecow/git-flow-completion/blob/master/git-flow-completion.zsh'
 
 # term highlight
 zinit ice pick"h.sh" id-as'hhighlighter'

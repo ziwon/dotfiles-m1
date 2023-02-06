@@ -12,7 +12,7 @@ export LESSCHARSET=utf-8
 
 # https://www.gnu.org/software/coreutils/manual/html_node/Block-size.html
 export BLOCK_SIZE=human-readable
-export TERM=xterm-256color
+export TERM=tmux-256color
 
 export GPG_TTY=$(tty)
 

@@ -51,8 +51,8 @@ brew 'git-extras'
 ##brew 'git-flow-avh'
 brew 'git-recent'
 brew 'gitmoji'
-brew 'grv'
 brew 'tig'
+brew 'gitui'
 
 ## build
 brew 'autoconf'

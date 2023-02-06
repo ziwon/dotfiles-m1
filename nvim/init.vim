@@ -22,6 +22,8 @@ Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
+"Plug 'jose-elias-alvarez/null-ls.nvim'
+"Plug 'jay-babu/mason-null-ls.nvim'
 Plug 'neovim/nvim-lspconfig'
 
 " General plugins
@@ -50,7 +52,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 " Plug 'itchyny/lightline.vim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'vmchale/just-vim'
 
 " Language support
@@ -72,7 +73,7 @@ Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 
 Plug 'jmcantrell/vim-virtualenv'               " For working with Python Virtualenv
-Plug 'cjrh/vim-conda'                          " For working with Conda env
+" Plug 'cjrh/vim-conda'                          " For working with Conda env
 
 " Colorschemes
 Plug 'chriskempson/base16-vim'
@@ -82,6 +83,7 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Load last
 Plug 'ryanoasis/vim-devicons'                  " Icons for NerdTree / Airline etc
+Plug 'lambdalisue/glyph-palette.vim'           " An universal palette for Nerd Fonts
 
 call plug#end()                                " End Plug config section
 
@@ -297,6 +299,49 @@ nnoremap <leader>q :close<cr>
 set tags=tags;/
 
 "----------------------------------------------
+" Plugin:ryanoasis/vim-devicons
+"----------------------------------------------
+
+" loading the plugin
+let g:webdevicons_enable = 1
+
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
+" adding the column to vimfiler
+let g:webdevicons_enable_vimfiler = 1
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+" ctrlp glyphs
+let g:webdevicons_enable_ctrlp = 1
+
+" adding to vim-startify screen
+let g:webdevicons_enable_startify = 1
+
+" adding to flagship's statusline
+let g:webdevicons_enable_flagship_statusline = 1
+
+" whether or not to show the nerdtree brackets around flags
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
+" Adding the custom source to denite
+let g:webdevicons_enable_denite = 1
+
+"----------------------------------------------
+" Plugin: lambdalisue/glyph-palette
+"----------------------------------------------
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
+
+"----------------------------------------------
 " Plugin: christoomey/vim-tmux-navigator
 "----------------------------------------------
 " tmux will send xterm-style keys when its xterm-keys option is on.
@@ -494,8 +539,9 @@ lsp.terraformls.setup{
 }
 EOF
 
-autocmd BufWritePre *.tfvars lua vim.lsp.buf.formatting_sync()
-autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+" https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md
+autocmd BufWritePre *.tfvars lua vim.lsp.buf.format()
+autocmd BufWritePre *.tf lua vim.lsp.buf.format()
 "----------------------------------------------
 " Plugin: nvim-treesitter/nvim-treesitter
 "----------------------------------------------

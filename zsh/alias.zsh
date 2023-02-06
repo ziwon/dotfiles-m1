@@ -85,6 +85,7 @@ alias kg='kubectl get'
 alias kc='kubectl create'
 alias kd='kubectl delete'
 alias kr='kubectl run'
+complete -F __start_kubectl k
 #alias odr='-o yaml --dry-run=client'
 
 # asdf

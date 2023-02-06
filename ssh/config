@@ -26,6 +26,13 @@ Host github.com
    IdentityFile ~/.ssh/id_rsa.github
    IdentitiesOnly yes
 
+Host ubuntu
+  HostName ubuntu.wfh
+
+Match originalhost ubuntu exec "[[ $(/usr/bin/dig +short ubuntu.wfh) == '' ]]"
+  Hostname ubuntu.ifc
+
+
 # Default
 Host *
   User aaron
